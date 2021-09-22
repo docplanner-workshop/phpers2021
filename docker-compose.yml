@@ -1,0 +1,39 @@
+version: '3'
+services:
+  backend:
+    image: webdevops/php-nginx-dev:8.0
+    ports:
+      - 8088:80
+    expose:
+      - 9003
+    environment:
+      WEB_DOCUMENT_ROOT: /app/public
+      WEB_DOCUMENT_INDEX: app_dev.php
+      PHP_DISPLAY_ERRORS: 1
+      XDEBUG_CLIENT_PORT: 9003
+      XDEBUG_CLIENT_HOST: host.docker.internal
+    volumes:
+      - "./:/app:delegated"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    volumes:
+      - docplanner-db-vol:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: docplanner-phpers2021
+      POSTGRES_PASSWORD: dp
+    networks:
+      - internal
+
+networks:
+  internal:
+    external: false
+
+volumes:
+  docplanner-db-vol: ~
