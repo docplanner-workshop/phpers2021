@@ -18,7 +18,8 @@ services:
       - "host.docker.internal:host-gateway"
     depends_on:
       - db
-
+    networks:
+      - internal
   db:
     image: postgres:latest
     ports:
