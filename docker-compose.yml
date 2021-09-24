@@ -8,7 +8,7 @@ services:
       - 9003
     environment:
       WEB_DOCUMENT_ROOT: /app/public
-      WEB_DOCUMENT_INDEX: app_dev.php
+      WEB_DOCUMENT_INDEX: index.php
       PHP_DISPLAY_ERRORS: 1
       XDEBUG_CLIENT_PORT: 9003
       XDEBUG_CLIENT_HOST: host.docker.internal
