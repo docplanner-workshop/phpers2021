@@ -4,13 +4,17 @@ namespace App\Tests;
 
 final class E2ETest extends E2ETestCase
 {
-    public function test() {
+    public function test()
+    {
 
         $this->givenClient();
-
-        $this->whenCallGetRequest('/doctors');
-
+        $this->whenCallGetRequest('/doctor');
         $this->expectResponse();
-        $this->expectResponseBody('[{"id":1,"name":"Jan Kowalski"},{"id":2,"name":"Jon Doe"}]');
+
+        $body = $this->getBody();
+        $doctorId = $body[0]['id'];
+
+        $this->whenCallGetRequest("/doctor/$doctorId/visit");
+        $this->expectResponse();
     }
 }

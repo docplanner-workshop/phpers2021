@@ -30,4 +30,10 @@ abstract class E2ETestCase extends WebTestCase
 
         self::assertEquals($content, $body);
     }
+
+    protected function getBody(): array
+    {
+        return json_decode($this->client->getResponse()->getContent(), true);
+    }
+
 }
