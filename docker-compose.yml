@@ -20,6 +20,7 @@ services:
       - db
     networks:
       - internal
+
   db:
     image: postgres:latest
     ports:
