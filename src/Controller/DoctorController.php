@@ -20,7 +20,7 @@ final class DoctorController extends AbstractController
     }
 
     /**
-     * @Route("/doctor")
+     * @Route("/doctor", methods={"GET"})
      */
     public function getDoctors(): JsonResponse
     {
