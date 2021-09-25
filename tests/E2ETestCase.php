@@ -18,6 +18,17 @@ abstract class E2ETestCase extends WebTestCase
     {
         $this->client->request('GET', $uri);
     }
+    protected function whenCallPostRequest(string $uri, array $body): void
+    {
+        $this->client->request(
+            'POST',
+            $uri,
+            $body,
+            [],
+            ['CONTENT_TYPE' => 'application/json'],
+            json_encode($body)
+        );
+    }
 
     protected function expectResponse(int $code = 200): void
     {
@@ -31,9 +42,15 @@ abstract class E2ETestCase extends WebTestCase
         self::assertEquals($content, $body);
     }
 
-    protected function getBody(): array
+    protected function lastResponseBody(): array
     {
         return json_decode($this->client->getResponse()->getContent(), true);
+    }
+
+    protected function getDoctorIdFromGetDoctorsResponse(): int
+    {
+        $body = $this->lastResponseBody();
+        return $body[0]['id'];
     }
 
 }
