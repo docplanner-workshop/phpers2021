@@ -47,10 +47,16 @@ abstract class E2ETestCase extends WebTestCase
         return json_decode($this->client->getResponse()->getContent(), true);
     }
 
-    protected function getDoctorIdFromGetDoctorsResponse(): int
+    protected function getFirstIdFromLastResponse(): int
     {
         $body = $this->lastResponseBody();
         return $body[0]['id'];
+    }
+
+    protected function countResponseItems(): int
+    {
+        $body = $this->lastResponseBody();
+        return count($body);
     }
 
 }

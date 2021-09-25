@@ -7,10 +7,14 @@ final class E2ETest extends E2ETestCase
     public function testProcess(): void
     {
         $this->givenClient();
-
         $this->getDoctors();
-        $this->addVisit();
-//        $this->getDoctorVisits();
+
+        $doctorId = $this->getFirstIdFromLastResponse();
+
+        $visitsCount = $this->countDoctorVisits($doctorId);
+        $this->addVisit($doctorId);
+
+        $this->thenDoctorHasOneMoreVisit($doctorId, $visitsCount + 1);
 
     }
 
@@ -20,25 +24,29 @@ final class E2ETest extends E2ETestCase
         $this->expectResponse();
     }
 
-    private function addVisit(): void
+    private function addVisit(int $doctorId): void
     {
-        $doctorId = $this->getDoctorIdFromGetDoctorsResponse();
-
         $body = [
             'dateTime' => '2021-10-09 10:30',
             'duration' => 60
         ];
 
-        $this->whenCallPostRequest("/doctor/$doctorId/visit", $body);
+        $this->whenCallPostRequest("/doctor/{$doctorId}/visit", $body);
         $this->expectResponse(202);
     }
 
-    private function getDoctorVisits(): void
+    private function countDoctorVisits(int $doctorId): int
     {
-        $body = $this->lastResponseBody();
-        $doctorId = $body[0]['id'];
-
         $this->whenCallGetRequest("/doctor/$doctorId/visit");
         $this->expectResponse();
+        return $this->countResponseItems();
+
+    }
+
+    private function thenDoctorHasOneMoreVisit(int $doctorId, int $expectedCount)
+    {
+        $visitCount = $this->countDoctorVisits($doctorId);
+
+        $this->assertEquals($expectedCount, $visitCount);
     }
 }
