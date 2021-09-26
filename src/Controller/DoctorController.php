@@ -3,6 +3,9 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Doctor;
+use App\Service\AddDoctor\AddDoctorInput;
+use App\Service\AddDoctor\AddDoctorService;
+use App\Service\GetDoctors\GetDoctorsService;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -15,6 +18,7 @@ final class DoctorController extends AbstractController
 {
     private SerializerInterface $serializer;
 
+
     public function __construct(SerializerInterface $serializer)
     {
         $this->serializer = $serializer;
@@ -23,11 +27,9 @@ final class DoctorController extends AbstractController
     /**
      * @Route("/doctor", methods={"GET"})
      */
-    public function getDoctors(): JsonResponse
+    public function getDoctors(GetDoctorsService $service): JsonResponse
     {
-        $repository = $this->getDoctrine()->getRepository(Doctor::class);
-        $doctors = $repository->findAll();
-        $data = $this->serializer->serialize($doctors, 'json');
+        $data = $this->serializer->serialize($service(), 'json');
 
         return new JsonResponse($data, Response::HTTP_OK, [], true);
     }
@@ -35,16 +37,12 @@ final class DoctorController extends AbstractController
     /**
      * @Route("/doctor", methods={"POST"})
      */
-    public function addDoctor(Request $request): JsonResponse
+    public function addDoctor(Request $request, AddDoctorService $addDoctorService): JsonResponse
     {
-        $manager = $this->getDoctrine()->getManager();
-
-        $doctor = new Doctor(
-            $request->request->get('name'),
+        $input = new AddDoctorInput(
+            $request->request->get('name')
         );
-
-        $manager->persist($doctor);
-        $manager->flush();
+        $addDoctorService($input);
 
         return new JsonResponse([], Response::HTTP_ACCEPTED);
     }
