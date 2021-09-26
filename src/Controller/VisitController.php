@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Doctor;
 use App\Entity\Visit;
+use App\Service\AddVisit\AddVisitInput;
+use App\Service\AddVisit\AddVisitService;
+use App\Service\GetDoctorVisits\GetDoctorVisitsService;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,12 +27,9 @@ final class VisitController extends AbstractController
     /**
      * @Route("/doctor/{id}/visit", methods={"GET"})
      */
-    public function getDoctors(Doctor $doctor): JsonResponse
+    public function getDoctors(Request $request, GetDoctorVisitsService $service): JsonResponse
     {
-        $visitRepository = $this->getDoctrine()->getRepository(Visit::class);
-
-        $visits = $visitRepository->findBy(['doctor' => $doctor]);
-        $data = $this->serializer->serialize($visits, 'json');
+        $data = $this->serializer->serialize($service($request->get('id')), 'json');
 
         return new JsonResponse($data, Response::HTTP_OK, [], true);
     }
@@ -37,17 +37,15 @@ final class VisitController extends AbstractController
     /**
      * @Route("/doctor/{id}/visit", methods={"POST"})
      */
-    public function addVisit(Request $request, Doctor $doctor): JsonResponse
-    {;
-        $manager = $this->getDoctrine()->getManager();
-        $visit = new Visit(
+    public function addVisit(Request $request, AddVisitService $service): JsonResponse
+    {
+        $input = new AddVisitInput(
+            $request->get('id'),
             new \DateTimeImmutable($request->request->get('dateTime')),
             (int) $request->request->get('duration'),
-            $doctor
         );
 
-        $manager->persist($visit);
-        $manager->flush();
+        $service($input);
 
         return new JsonResponse('', Response::HTTP_ACCEPTED, [], true);
     }
