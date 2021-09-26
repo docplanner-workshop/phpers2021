@@ -59,4 +59,10 @@ abstract class E2ETestCase extends WebTestCase
         return count($body);
     }
 
+    protected function getDoctors(): void
+    {
+        $this->whenCallGetRequest('/doctor');
+        $this->expectResponse();
+    }
+
 }

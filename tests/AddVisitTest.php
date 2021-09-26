@@ -21,12 +21,6 @@ final class AddVisitTest extends E2ETestCase
 
     }
 
-    private function getDoctors(): void
-    {
-        $this->whenCallGetRequest('/doctor');
-        $this->expectResponse();
-    }
-
     private function givenVisitsCount(): void
     {
         $this->baseVisitCount = $this->countDoctorVisits();
