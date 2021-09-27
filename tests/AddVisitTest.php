@@ -1,8 +1,8 @@
 <?php
-declare(strict_types=1);
-namespace App\Tests;
 
-use function PHPUnit\Framework\assertEquals;
+declare(strict_types=1);
+
+namespace App\Tests;
 
 final class AddVisitTest extends E2ETestCase
 {
@@ -18,7 +18,6 @@ final class AddVisitTest extends E2ETestCase
         $this->whenAddVisit();
 
         $this->thenDoctorHasOneMoreVisit();
-
     }
 
     private function givenVisitsCount(): void
@@ -26,25 +25,25 @@ final class AddVisitTest extends E2ETestCase
         $this->baseVisitCount = $this->countDoctorVisits();
     }
 
-    private function givenDoctorId()
+    private function givenDoctorId(): void
     {
         $this->getDoctors();
 
         $this->doctorId = $this->getFirstIdFromLastResponse();
     }
 
-    private function whenAddVisit()
+    private function whenAddVisit(): void
     {
         $body = [
             'dateTime' => '2021-10-09 10:30',
-            'duration' => 60
+            'duration' => 60,
         ];
 
         $this->whenCallPostRequest("/doctor/{$this->doctorId}/visit", $body);
         $this->expectResponse(202);
     }
 
-    private function thenDoctorHasOneMoreVisit()
+    private function thenDoctorHasOneMoreVisit(): void
     {
         $visitCount = $this->countDoctorVisits();
 
@@ -55,8 +54,7 @@ final class AddVisitTest extends E2ETestCase
     {
         $this->whenCallGetRequest("/doctor/{$this->doctorId}/visit");
         $this->expectResponse();
+
         return $this->countResponseItems();
     }
-
-
 }

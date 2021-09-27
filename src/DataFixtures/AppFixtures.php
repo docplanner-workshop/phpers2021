@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\DataFixtures;
 
 use App\Entity\Doctor;
@@ -9,7 +11,7 @@ use Doctrine\Persistence\ObjectManager;
 
 class AppFixtures extends Fixture
 {
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $entities = [];
 
@@ -33,7 +35,6 @@ class AppFixtures extends Fixture
             60,
             $doctor2
         ));
-
 
         foreach ($entities as $entity) {
             $manager->persist($entity);
