@@ -1,9 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Service\GetDoctorVisits;
 
-use App\Entity\Doctor;
 use App\Entity\Visit;
 use App\Repository\DoctorRepository;
 use App\Repository\VisitRepository;
@@ -18,6 +18,7 @@ final class GetDoctorVisitsService
         $this->visitRepository = $visitRepository;
         $this->doctorRepository = $doctorRepository;
     }
+
     /**
      * @return Visit[]
      */
@@ -27,5 +28,4 @@ final class GetDoctorVisitsService
 
         return $this->visitRepository->findBy(['doctor' => $doctor]);
     }
-
 }

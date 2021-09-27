@@ -1,12 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Service\AddDoctor;
 
 use App\Entity\Doctor;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ObjectManager;
 
 final class AddDoctorService
 {
@@ -23,5 +22,4 @@ final class AddDoctorService
         $this->manager->persist($doctor);
         $this->manager->flush();
     }
-
 }

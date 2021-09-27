@@ -1,11 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-
 namespace App\Service\AddVisit;
-
-
-use App\Entity\Doctor;
 
 final class AddVisitInput
 {
@@ -14,6 +11,7 @@ final class AddVisitInput
     private \DateTimeImmutable $date;
 
     private int $duration;
+
     public function __construct(string $doctorId, \DateTimeImmutable $date, int $duration)
     {
         $this->doctorId = $doctorId;
@@ -35,5 +33,4 @@ final class AddVisitInput
     {
         return $this->duration;
     }
-
 }

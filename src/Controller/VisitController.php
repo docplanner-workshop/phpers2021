@@ -40,12 +40,11 @@ final class VisitController extends AbstractController
     {
         $input = new AddVisitInput(
             (string) $request->get('id'),
-            new \DateTimeImmutable($request->request->get('dateTime')),
+            new \DateTimeImmutable((string) $request->request->get('dateTime')),
             (int) $request->request->get('duration')
         );
 
-        $visit = $service($input);
-
+        $service($input);
 
         return new JsonResponse('', Response::HTTP_ACCEPTED, [], true);
     }
