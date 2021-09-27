@@ -42,7 +42,7 @@ final class VisitController extends AbstractController
     {
         $manager = $this->getDoctrine()->getManager();
         $visit = new Visit(
-            new \DateTimeImmutable($request->request->get('dateTime')),
+            new \DateTimeImmutable((string) $request->request->get('dateTime')),
             (int) $request->request->get('duration'),
             $doctor
         );

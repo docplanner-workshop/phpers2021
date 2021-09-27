@@ -41,7 +41,7 @@ final class DoctorController extends AbstractController
         $manager = $this->getDoctrine()->getManager();
 
         $doctor = new Doctor(
-            $request->request->get('name'),
+            (string) $request->request->get('name'),
         );
 
         $manager->persist($doctor);
