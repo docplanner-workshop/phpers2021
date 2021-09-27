@@ -1,0 +1,10 @@
+parameters:
+    checkGenericClassInNonGenericObjectType: false
+    level: max
+    paths:
+        - %currentWorkingDirectory%/src
+    excludes_analyse:
+        - %currentWorkingDirectory%/src/SharedKernel/Infrastructure/Symfony/Kernel.php
+        - %currentWorkingDirectory%/src/SharedKernel/Assertion.php
+        - %currentWorkingDirectory%/src/SharedKernel/Validator
+        - %currentWorkingDirectory%/src/Opinions/Infrastructure/Persistence/Doctrine/Migrations

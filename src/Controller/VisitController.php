@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\Doctor;
-use App\Entity\Visit;
 use App\Service\AddVisit\AddVisitInput;
 use App\Service\AddVisit\AddVisitService;
 use App\Service\GetDoctorVisits\GetDoctorVisitsService;
@@ -41,7 +39,7 @@ final class VisitController extends AbstractController
     public function addVisit(Request $request, AddVisitService $service): JsonResponse
     {
         $input = new AddVisitInput(
-            $request->get('id'),
+            (string) $request->get('id'),
             new \DateTimeImmutable($request->request->get('dateTime')),
             (int) $request->request->get('duration')
         );

@@ -17,7 +17,7 @@ class Visit
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -27,7 +27,7 @@ class Visit
     /**
      * @ORM\Column(type="integer")
      */
-    private $duration;
+    private int $duration;
 
     /**
      * @ORM\ManyToOne(targetEntity="Doctor")
@@ -42,17 +42,17 @@ class Visit
         $this->doctor = $doctor;
     }
 
-    public function id()
+    public function id(): int
     {
         return $this->id;
     }
 
-    public function date()
+    public function date(): \DateTimeImmutable
     {
         return $this->date;
     }
 
-    public function duration()
+    public function duration(): int
     {
         return $this->duration;
     }

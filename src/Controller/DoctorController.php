@@ -41,7 +41,7 @@ final class DoctorController extends AbstractController
     public function addDoctor(Request $request, AddDoctorService $addDoctorService): JsonResponse
     {
         $input = new AddDoctorInput(
-            $request->request->get('name')
+            (string) $request->request->get('name')
         );
         $addDoctorService($input);
 
