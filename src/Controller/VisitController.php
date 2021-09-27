@@ -1,5 +1,7 @@
 <?php
+
 declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Doctor;
@@ -13,7 +15,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 final class VisitController extends AbstractController
 {
@@ -42,10 +43,11 @@ final class VisitController extends AbstractController
         $input = new AddVisitInput(
             $request->get('id'),
             new \DateTimeImmutable($request->request->get('dateTime')),
-            (int) $request->request->get('duration'),
+            (int) $request->request->get('duration')
         );
 
-        $service($input);
+        $visit = $service($input);
+
 
         return new JsonResponse('', Response::HTTP_ACCEPTED, [], true);
     }
