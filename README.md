@@ -11,19 +11,16 @@ PHPers Summit 2021 - Modular monolith unicorn
 `docker-compose up -d`
 #### go into container
 `docker-compose exec backend bash`
-#### create schema
-`bin/console d:s:u -f`
-#### load fixtures
-`bin/console d:f:l --no-interaction`
+
+`cd app`
+
+`composer install`
+#### database
+`composer recreate-db`
 #### run tests
 `bin/phpunit`
-`OK (1 test, 2 assertions)`
+
 
 ### RECRATE DATABASE
+`composer recreate-db`
 
-#### drop schema
-`bin/console d:s:d -f`
-#### create schema
-`bin/console d:s:u -f`
-#### fixtures load
-`bin/console d:f:l --no-interaction`

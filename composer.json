@@ -89,6 +89,18 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "recreate-db": [
+            "bin/console d:s:d -f",
+            "bin/console d:s:u -f",
+            "bin/console d:f:l --no-interaction"
+        ],
+        "cs-fix": [
+            "vendor/bin/php-cs-fixer fix /src --no-interaction --diff -v fix",
+            "vendor/bin/php-cs-fixer fix /tests --no-interaction --diff -v fix"
+        ],
+        "php-stan": [
+            "vendor/bin/phpstan analyse"
         ]
     },
     "conflict": {
