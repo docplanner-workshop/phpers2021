@@ -1,0 +1,32 @@
+paths:
+  - ./../src
+exclude_files:
+  - '#.*Test.*#'
+  - '#.*Tests.*#'
+layers:
+  - name: UI
+    collectors:
+      - type: bool
+        must:
+          - type: className
+            regex: App\\Controller\.*
+  - name: Application
+    collectors:
+      - type: bool
+        must:
+          - type: className
+            regex: App\\Service\.*
+  - name: Persistance
+    collectors:
+      - type: bool
+        must:
+          - type: className
+            regex: App\\(Entity|Repository)\.*
+
+ruleset:
+  UI:
+    - Application
+    - Persistance
+  Application:
+    - Persistance
+
