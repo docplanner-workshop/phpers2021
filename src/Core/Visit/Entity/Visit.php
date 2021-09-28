@@ -56,7 +56,7 @@ class Visit
         return $this->duration;
     }
 
-    public function doctor(): Doctor
+    public function doctor(): int
     {
         return $this->doctor;
     }
