@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Visit\Entity;
+namespace App\Core\Visit\Domain;
 
-use App\Core\Visit\Repository\VisitRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=VisitRepository::class)
+ * @ORM\Entity()
  */
 class Visit
 {

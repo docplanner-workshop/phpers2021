@@ -19,6 +19,6 @@ doctrine:
             Visit:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/Core/Visit/Entity'
-                prefix: 'App\Core\Visit\Entity'
+                dir: '%kernel.project_dir%/src/Core/Visit/Domain'
+                prefix: 'App\Core\Visit\Domain'
                 alias: Visit

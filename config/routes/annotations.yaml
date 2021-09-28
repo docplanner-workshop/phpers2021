@@ -2,7 +2,7 @@ doctor:
     resource: ../../src/Core/Doctor/Infrastructure/Entry/Http
     type: annotation
 visit:
-    resource: ../../src/Core/Visit/Controller/
+    resource: ../../src/Core/Visit/Infrastructure/Entry/Http
     type: annotation
 
 kernel:

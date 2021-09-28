@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\DataFixtures;
 
 use App\Core\Doctor\Domain\Doctor;
-use App\Core\Visit\Entity\Visit;
+use App\Core\Visit\Domain\Visit;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 

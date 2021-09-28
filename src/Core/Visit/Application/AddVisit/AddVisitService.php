@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Visit\Service\AddVisit;
+namespace App\Core\Visit\Application\AddVisit;
 
-use App\Core\Visit\Entity\Visit;
+use App\Core\Visit\Domain\Visit;
 use Doctrine\ORM\EntityManagerInterface;
 
 final class AddVisitService

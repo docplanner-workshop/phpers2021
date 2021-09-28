@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Visit\Controller;
+namespace App\Core\Visit\Infrastructure\Entry\Http;
 
-use App\Core\Visit\Service\AddVisit\AddVisitInput;
-use App\Core\Visit\Service\AddVisit\AddVisitService;
-use App\Core\Visit\Service\GetDoctorVisits\GetDoctorVisitsService;
+use App\Core\Visit\Application\AddVisit\AddVisitInput;
+use App\Core\Visit\Application\AddVisit\AddVisitService;
+use App\Core\Visit\Application\GetDoctorVisits\GetDoctorVisitsService;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
