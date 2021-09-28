@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Legacy\Service\GetDoctorVisits;
+namespace App\Core\Visit\Service\GetDoctorVisits;
 
-use App\Legacy\Entity\Visit;
-use App\Legacy\Repository\DoctorRepository;
-use App\Legacy\Repository\VisitRepository;
+use App\Core\Doctor\Repository\DoctorRepository;
+use App\Core\Visit\Entity\Visit;
+use App\Core\Visit\Repository\VisitRepository;
 
 final class GetDoctorVisitsService
 {

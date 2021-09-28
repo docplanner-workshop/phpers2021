@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Legacy\Entity;
+namespace App\Core\Visit\Entity;
 
-use App\Legacy\Repository\VisitRepository;
+use App\Core\Visit\Repository\VisitRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -30,16 +30,15 @@ class Visit
     private int $duration;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Doctor")
-     * @ORM\JoinColumn(name="doctor_id", referencedColumnName="id")
+     * @ORM\Column(type="integer")
      */
-    private Doctor $doctor;
+    private int $doctor;
 
-    public function __construct(\DateTimeImmutable $date, int $duration, Doctor $doctor)
+    public function __construct(\DateTimeImmutable $date, int $duration, int $doctorId)
     {
         $this->date = $date;
         $this->duration = $duration;
-        $this->doctor = $doctor;
+        $this->doctor = $doctorId;
     }
 
     public function id(): int

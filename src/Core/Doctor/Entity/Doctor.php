@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Legacy\Entity;
+namespace App\Core\Doctor\Entity;
 
-use App\Legacy\Repository\DoctorRepository;
+use App\Core\Doctor\Repository\DoctorRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

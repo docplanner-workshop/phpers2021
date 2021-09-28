@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Legacy\Repository;
+namespace App\Core\Visit\Repository;
 
-use App\Legacy\Entity\Visit;
+use App\Core\Visit\Entity\Visit;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

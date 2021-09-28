@@ -1,5 +1,8 @@
-controllers:
-    resource: ../../src/Legacy/Controller/
+doctor:
+    resource: ../../src/Core/Doctor/Controller/
+    type: annotation
+visit:
+    resource: ../../src/Core/Visit/Controller/
     type: annotation
 
 kernel:

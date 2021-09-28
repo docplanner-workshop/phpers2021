@@ -13,13 +13,31 @@ services:
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    App\:
-        resource: '../src/'
-        exclude:
-            - '../src/Legacy/DependencyInjection/'
-            - '../src/Legacy/Entity/'
-            - '../src/Kernel.php'
-            - '../src/Tests/'
+#    App\:
+#        resource: '../src/'
+#        exclude:
+#            - '../src/Legacy/DependencyInjection/'
+#            - '../src/Legacy/Entity/'
+#            - '../src/Kernel.php'
+#            - '../src/Tests/'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\DataFixtures\AppFixtures:
+#
+# Doctor Module
+#
+    App\Core\Doctor\Controller\DoctorController:
+    App\Core\Doctor\Repository\DoctorRepository:
+    App\Core\Doctor\Service\AddDoctor\AddDoctorService:
+    App\Core\Doctor\Service\GetDoctors\GetDoctorsService:
+
+#
+# Visit Module
+#
+
+    App\Core\Visit\Controller\VisitController:
+    App\Core\Visit\Repository\VisitRepository:
+    App\Core\Visit\Service\AddVisit\AddVisitService:
+    App\Core\Visit\Service\GetDoctorVisits\GetDoctorVisitsService:
