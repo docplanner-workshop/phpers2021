@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Service\AddVisit;
+namespace App\Legacy\Service\AddVisit;
 
-use App\Entity\Doctor;
-use App\Entity\Visit;
-use App\Repository\DoctorRepository;
+use App\Legacy\Entity\Doctor;
+use App\Legacy\Entity\Visit;
+use App\Legacy\Repository\DoctorRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 final class AddVisitService

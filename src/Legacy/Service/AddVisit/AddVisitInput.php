@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\AddVisit;
+namespace App\Legacy\Service\AddVisit;
 
 final class AddVisitInput
 {

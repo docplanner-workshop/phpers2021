@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Entity\Doctor;
-use App\Entity\Visit;
+use App\Legacy\Entity\Doctor;
+use App\Legacy\Entity\Visit;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 

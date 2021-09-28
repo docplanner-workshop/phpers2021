@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Entity;
+namespace App\Legacy\Entity;
 
-use App\Repository\VisitRepository;
+use App\Legacy\Repository\VisitRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

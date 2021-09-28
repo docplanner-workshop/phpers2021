@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Service\AddDoctor;
+namespace App\Legacy\Service\AddDoctor;
 
 final class AddDoctorInput
 {

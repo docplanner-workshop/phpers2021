@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Service\AddDoctor;
+namespace App\Legacy\Service\AddDoctor;
 
-use App\Entity\Doctor;
+use App\Legacy\Entity\Doctor;
 use Doctrine\ORM\EntityManagerInterface;
 
 final class AddDoctorService
