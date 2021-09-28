@@ -28,10 +28,11 @@ services:
 #
 # Doctor Module
 #
-    App\Core\Doctor\Controller\DoctorController:
-    App\Core\Doctor\Repository\DoctorRepository:
-    App\Core\Doctor\Service\AddDoctor\AddDoctorService:
-    App\Core\Doctor\Service\GetDoctors\GetDoctorsService:
+    App\Core\Doctor\Infrastructure\Entry\Http\DoctorController:
+    App\Core\Doctor\Domain\DoctorRepository:
+        class: App\Core\Doctor\Infrastructure\Repository\DoctrineDoctorRepository
+    App\Core\Doctor\Application\AddDoctor\AddDoctorService:
+    App\Core\Doctor\Application\GetDoctors\GetDoctorsService:
 
 #
 # Visit Module

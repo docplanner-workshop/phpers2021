@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Doctor\Service\GetDoctors;
+namespace App\Core\Doctor\Application\GetDoctors;
 
-use App\Core\Doctor\Entity\Doctor;
-use App\Core\Doctor\Repository\DoctorRepository;
+use App\Core\Doctor\Domain\Doctor;
+use App\Core\Doctor\Domain\DoctorRepository;
 
 final class GetDoctorsService
 {

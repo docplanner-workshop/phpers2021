@@ -13,8 +13,8 @@ doctrine:
             Doctor:
                 is_bundle: false
                 type: annotation
-                dir: '%kernel.project_dir%/src/Core/Doctor/Entity'
-                prefix: 'App\Core\Doctor\Entity'
+                dir: '%kernel.project_dir%/src/Core/Doctor/Domain'
+                prefix: 'App\Core\Doctor\Domain'
                 alias: Doctor
             Visit:
                 is_bundle: false

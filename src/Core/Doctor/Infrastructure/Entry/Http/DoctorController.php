@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Doctor\Controller;
+namespace App\Core\Doctor\Infrastructure\Entry\Http;
 
-use App\Core\Doctor\Service\AddDoctor\AddDoctorInput;
-use App\Core\Doctor\Service\AddDoctor\AddDoctorService;
-use App\Core\Doctor\Service\GetDoctors\GetDoctorsService;
+use App\Core\Doctor\Application\AddDoctor\AddDoctorInput;
+use App\Core\Doctor\Application\AddDoctor\AddDoctorService;
+use App\Core\Doctor\Application\GetDoctors\GetDoctorsService;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

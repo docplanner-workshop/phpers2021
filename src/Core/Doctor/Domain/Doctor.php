@@ -2,13 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Doctor\Entity;
+namespace App\Core\Doctor\Domain;
 
-use App\Core\Doctor\Repository\DoctorRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=DoctorRepository::class)
+ * @ORM\Entity()
  */
 final class Doctor
 {

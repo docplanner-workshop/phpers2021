@@ -1,5 +1,5 @@
 doctor:
-    resource: ../../src/Core/Doctor/Controller/
+    resource: ../../src/Core/Doctor/Infrastructure/Entry/Http
     type: annotation
 visit:
     resource: ../../src/Core/Visit/Controller/
