@@ -21,19 +21,19 @@ class AppFixtures extends Fixture
         $entities[] = (new Visit(
             new \DateTimeImmutable('2021-10-10 16:20:00'),
             45,
-            1
+            $entities[0]->id()
         ));
 
         $entities[] = (new Visit(
             new \DateTimeImmutable('2021-10-11 08:00:00'),
             30,
-            1
+            $entities[0]->id()
         ));
 
         $entities[] = (new Visit(
             new \DateTimeImmutable('2021-10-15 10:30:00'),
             60,
-            2
+            $entities[1]->id()
         ));
 
         foreach ($entities as $entity) {

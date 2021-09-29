@@ -21,7 +21,7 @@ final class AddVisitService
         $visit = new Visit(
             $input->date(),
             $input->duration(),
-            (int) $input->doctorId()
+            $input->doctorId()
         );
 
         $this->manager->persist($visit);

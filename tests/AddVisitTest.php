@@ -6,7 +6,7 @@ namespace App\Tests;
 
 final class AddVisitTest extends E2ETestCase
 {
-    private int $doctorId;
+    private string $doctorId;
     private int $baseVisitCount;
 
     public function testHappyPath(): void

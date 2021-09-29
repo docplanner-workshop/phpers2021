@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Core\Visit\Domain;
 
+use App\Shared\Uuid\Uuid;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -12,11 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Visit
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
+     * @ORM\Id()
+     * @ORM\Column(type="guid")
      */
-    private int $id;
+    private string $id;
 
     /**
      * @ORM\Column(type="datetime_immutable")
@@ -29,18 +29,19 @@ class Visit
     private int $duration;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
-    private int $doctor;
+    private string $doctor;
 
-    public function __construct(\DateTimeImmutable $date, int $duration, int $doctorId)
+    public function __construct(\DateTimeImmutable $date, int $duration, string $doctorId)
     {
+        $this->id = (string) Uuid::uuid4();
         $this->date = $date;
         $this->duration = $duration;
         $this->doctor = $doctorId;
     }
 
-    public function id(): int
+    public function id(): string
     {
         return $this->id;
     }
@@ -55,7 +56,7 @@ class Visit
         return $this->duration;
     }
 
-    public function doctor(): int
+    public function doctor(): string
     {
         return $this->doctor;
     }

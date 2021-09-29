@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Core\Doctor\Domain;
 
+use App\Shared\Uuid\Uuid;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -13,10 +14,9 @@ final class Doctor
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="guid")
      */
-    private int $id;
+    private string $id;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -25,10 +25,11 @@ final class Doctor
 
     public function __construct(string $name)
     {
+        $this->id = (string) Uuid::uuid4();
         $this->name = $name;
     }
 
-    public function id(): int
+    public function id(): string
     {
         return $this->id;
     }
