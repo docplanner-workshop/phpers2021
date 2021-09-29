@@ -51,3 +51,9 @@ services:
 #
     App\Core\Availability\Application\GetAvailability\CheckAvailabilityService:
     App\Core\Availability\Infrastructure\Entry\ModuleApi\CheckAvailability:
+
+#
+# Shared
+#
+    App\Shared\MessageBus\EventDispatcher:
+        class: App\Shared\MessageBus\FakeEventDispatcher
