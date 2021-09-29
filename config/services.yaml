@@ -41,5 +41,13 @@ services:
     App\Core\Visit\Infrastructure\Entry\Http\VisitController:
     App\Core\Visit\Domain\VisitRepository:
         class: App\Core\Visit\Infrastructure\Repository\DoctrineVisitRepository
+    App\Core\Visit\Domain\AvailabilityChecker:
+        class: App\Core\Visit\Infrastructure\Availability\ModuleAvailabilityChecker
     App\Core\Visit\Application\AddVisit\AddVisitService:
     App\Core\Visit\Application\GetDoctorVisits\GetDoctorVisitsService:
+
+#
+# Availability Module
+#
+    App\Core\Availability\Application\GetAvailability\CheckAvailabilityService:
+    App\Core\Availability\Infrastructure\Entry\ModuleApi\CheckAvailability:

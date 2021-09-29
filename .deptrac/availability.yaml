@@ -4,24 +4,33 @@ exclude_files:
   - '#.*Test.*#'
   - '#.*Tests.*#'
 layers:
+  - name: ModuleApi
+    collectors:
+      - type: bool
+        must:
+          - type: className
+            regex: App\\Core\\Availability\\Infrastructure\\Entry\\ModuleApi\.*
   - name: Application
     collectors:
       - type: bool
         must:
           - type: className
-            regex: App\\Core\\Visit\\Application\.*
+            regex: App\\Core\\Availability\\Application\.*
   - name: Domain
     collectors:
       - type: bool
         must:
           - type: className
-            regex: App\\Core\\Visit\\Domain\.*
+            regex: App\\Core\\Availability\\Domain\.*
   - name: Infrastructure
     collectors:
       - type: bool
         must:
           - type: className
-            regex: App\\Core\\Visit\\Infrastructure\.*
+            regex: App\\Core\\Availability\\Infrastructure\.*
+        must-not:
+          - type: className
+            regex: App\\Core\\Availability\\Infrastructure\\Entry\\ModuleApi\.*
   - name: Shared
     collectors:
       - type: bool
@@ -36,7 +45,7 @@ layers:
             regex: App\.*
         must-not:
           - type: className
-            regex: App\\Core\\Visit\.*
+            regex: App\\Core\\Availability\.*
           - type: className
             regex: App\\DataFixtures\.*
           - type: className
@@ -45,19 +54,20 @@ layers:
             regex:  Doctrine\\ORM\\Mapping
 
 ruleset:
+  ModuleApi:
+    - Application
   Application:
     - Domain
-    - Shared
   Domain:
     - Shared
   Infrastructure:
     - Domain
     - Application
-    - Shared
-    - System
   System:
     - Shared
+    - ModuleApi
   Shared:
     - System
+
 
 

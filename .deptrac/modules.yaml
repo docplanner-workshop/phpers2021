@@ -1,0 +1,29 @@
+paths:
+  - ./../src
+exclude_files:
+  - '#.*Test.*#'
+  - '#.*Tests.*#'
+layers:
+  - name: Doctor
+    collectors:
+      - type: bool
+        must:
+          - type: className
+            regex: App\\Core\\Doctor\.*
+  - name: Visit
+    collectors:
+      - type: bool
+        must:
+          - type: className
+            regex: App\\Core\\Visit\.*
+  - name: Availability
+    collectors:
+      - type: bool
+        must:
+          - type: className
+            regex: App\\Core\\Availability\.*
+
+ruleset:
+  Visit:
+    - Availability
+
