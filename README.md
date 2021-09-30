@@ -12,8 +12,6 @@ PHPers Summit 2021 - Modular monolith unicorn
 #### go into container
 `docker-compose exec backend bash`
 
-`cd app`
-
 `composer install`
 #### database
 `composer recreate-db`
