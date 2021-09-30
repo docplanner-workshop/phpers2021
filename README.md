@@ -20,6 +20,8 @@ PHPers Summit 2021 - Modular monolith unicorn
 #### run tests
 `bin/phpunit`
 
+#### got to web
+`http://localhost:8088/`
 
 ### RECRATE DATABASE
 `composer recreate-db`
